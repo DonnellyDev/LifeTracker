@@ -13,4 +13,4 @@ Life Tracker (LT) is a multi-faceted web based application designed for students
 - [@Lubin Babu ](https://github.com/Loui-x)
 
 
-![Logo]
+![Logo]()
