@@ -1,11 +1,21 @@
 const createError = require('http-errors');
+
+
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 
-const indexRouter = require('./routes/index');
+const  config = require('./config/globals');
+
+// Router Objects
+const indexRouter = require('./routes/indexRouter');
 const usersRouter = require('./routes/users');
+
+// Passport Modules
+const passport =require('passport');
+const session = require('express-session');
 
 const app = express();
 
@@ -19,9 +29,39 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Configure passport module https://www.npmjs.com/package/express-session
+// secret is a salt value used for hashing
+// save forces the session to be saved back to the session store
+// even if it's never modified during the request
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Initalize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Link Passport to Users Model
+const User = require('./models/userModels');
+passport.use(User.createStrategy());
+
+// Set passport to w/r users to/from session object
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+// Routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+mongoose.connect(config.db, {useNewUrlParser: true, useUnifiedTopology: true })
+    .then((message) => {
+  console.log('Connected successfully!');
+})
+    .catch((error) => {
+      console.log(`Error while connecting! ${error}`);
+    });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
