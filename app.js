@@ -1,3 +1,4 @@
+//We do not need .env file
 require('dotenv').config()
 
 
