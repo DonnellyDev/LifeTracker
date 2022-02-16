@@ -16,4 +16,4 @@ const userSchema = new mongoose.Schema(userSchemaDefinition);
 // i.e. hashing/salting password, and handling authentication attempts
 userSchema.plugin(plm);
 
-module.exports = new mongoose.model('User', userSchema);
+module.exports = new mongoose.model('users', userSchema);
