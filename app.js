@@ -1,3 +1,7 @@
+//We do not need .env file
+require('dotenv').config()
+
+// Just checking
 const createError = require('http-errors');
 
 
@@ -7,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const  config = require('./config/globals');
+// const config = require('./config/globals');
 
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
@@ -34,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // save forces the session to be saved back to the session store
 // even if it's never modified during the request
 app.use(session({
-  secret: config.sessionSecret,
+  secret: "LifeRTa3545",
   resave: false,
   saveUninitialized: false
 }));
@@ -55,7 +59,10 @@ passport.deserializeUser(User.deserializeUser());
 // Routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-mongoose.connect(config.db, {useNewUrlParser: true, useUnifiedTopology: true })
+//
+var connectionString = process.env.DB_CONN;
+
+mongoose.connect(connectionString , {useNewUrlParser: true, useUnifiedTopology: true })
     .then((message) => {
   console.log('Connected successfully!');
 })
