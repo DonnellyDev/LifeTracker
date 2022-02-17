@@ -18,11 +18,12 @@ const userSchemaDefinition = { // Add field according to the needs of user
 // Create a new mongoose schema
 const userSchema = new mongoose.Schema(userSchemaDefinition);
 
-// Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('users', userSchema);
-
 // Use passport-local-mongoose to indicate this is a special authentication model
 // plugin() adds plm functionality to our model
 // i.e. hashing/salting password, and handling authentication attempts
 userSchema.plugin(plm);
+
+// Using the schema object, make a new mongoose model
+module.exports = new mongoose.model('users', userSchema);
+
 

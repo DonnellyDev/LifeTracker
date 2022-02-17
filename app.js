@@ -38,12 +38,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // save forces the session to be saved back to the session store
 // even if it's never modified during the request
 app.use(session({
-  secret: "LifeRTa3545",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
 
-// Initalize Passport
+// Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
