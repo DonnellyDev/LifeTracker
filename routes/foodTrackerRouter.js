@@ -13,6 +13,10 @@ function IsLoggedIn(req,res,next){
     res.redirect('/login');
 }
 
+/**------------------
+ * Get Routes
+ ---------------------------*/
+
 /** GET home page. **/
 router.get('/', IsLoggedIn,function(req, res, next) {
     FoodEntries.find({user:req.user},(err,foodTracked)=>{
@@ -25,7 +29,7 @@ router.get('/', IsLoggedIn,function(req, res, next) {
 router.get('/add', IsLoggedIn,function(req, res, next) {
     FoodEntries.find({user:req.user},(err,foodTracked)=>{
         if(err){console.log(err);}
-        else{res.render('foodTracker/indexFoodTracker', { title: 'Food Tracker' ,user:req.user,dataset:foodTracked});}
+        else{res.render('foodTracker/addFoodTracker', { title: 'Add a Food Item' ,user:req.user,dataset:foodTracked});}
     })
 });
 
@@ -37,8 +41,23 @@ router.get('/edit/:_id', IsLoggedIn,function(req, res, next) {
     })
 });
 
+/**-------------------------
+ * Post Routes
+ ---------------------------*/
 
 
+router.post('/add',IsLoggedIn,(req, res, next) => {
+    FoodEntries.create({
+        name:req.body.name,
+        mealTime: req.body.mealTime,
+        mealType: req.body.mealType,
+        description:req.body.descriptionFood,
+        date:req.body.eatenDate,
+        user:req.user},
+        (err)=> {
+        if(err){console.log(err)}else{res.redirect('/foodTracker')}
+    });
+});
 
 
 
