@@ -11,8 +11,13 @@ const userSchemaDefinition = { // Add field according to the needs of user
     },
     password: {
         type: String,
-        required: true
-    }
+
+    },
+    // connecting user to their food tracker
+    foodTracking:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"foodEntries"
+    }]
 };
 
 // Create a new mongoose schema

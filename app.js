@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
-const usersRouter = require('./routes/users');
+const foodTrackerRouter = require('./routes/foodTrackerRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -58,7 +58,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/foodTracker',foodTrackerRouter);
 //
 var connectionString = process.env.DB_CONN;
 
