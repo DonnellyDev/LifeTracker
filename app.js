@@ -69,6 +69,25 @@ mongoose.connect(connectionString , {useNewUrlParser: true, useUnifiedTopology: 
     .catch((error) => {
       console.log(`Error while connecting! ${error}`);
     });
+
+
+// HBS Helper Methods
+const hbs = require('hbs');
+hbs.registerHelper('createOption', (currentValue, selectedValue) => {
+  //initialize a attribute
+  let selectedAttribute = '';
+  if (currentValue == selectedValue) {
+    selectedAttribute = 'selected'
+  }
+  // render html code for an <option> element
+  // it will render <option selected>Text</option> if this is the selected option in Mongo
+  return new hbs.SafeString("<option " + selectedAttribute +">" + currentValue + "</option>");
+});
+
+// helper function to format date values
+hbs.registerHelper('toShortDate', (longDateValue) => {
+  return new hbs.SafeString(longDateValue.toLocaleDateString('en-CA'));
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
