@@ -7,6 +7,11 @@ const waterSchemaDefinition = {
         type:String,
         required :true
     },
+    quantity:{
+        type:Number,
+        required: true
+    },
+
 };
 
 // Create a new mongoose schema
