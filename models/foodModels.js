@@ -1,5 +1,5 @@
 // Import mongoose
-const mongo = require("mongoose");
+const mongoose = require('mongoose');
 
 // Create schema definition object
 const foodSchemaDefinition = {

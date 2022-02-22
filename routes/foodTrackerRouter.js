@@ -13,11 +13,11 @@ function IsLoggedIn(req,res,next){
     res.redirect('/login');
 }
 
+
 /**------------------
  * Get Routes
  ---------------------------*/
 
-/** GET home page. **/
 router.get('/', IsLoggedIn,function(req, res, next) {
     FoodEntries.find({user:req.user},(err,foodTracked)=>{
         if(err){console.log(err);}
@@ -30,6 +30,7 @@ router.get('/add', IsLoggedIn,function(req, res, next) {
     FoodEntries.find({user:req.user},(err,foodTracked)=>{
         if(err){console.log(err);}
         else{res.render('foodTracker/addFoodTracker', { title: 'Add a Food Item' ,user:req.user,dataset:foodTracked});}
+
     })
 });
 
@@ -77,6 +78,14 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
             if(err){console.log(err)}else{res.redirect('/foodtracker')}
         });
 });
+
+        else{res.render('foodTracker/indexFoodTracker', { title: 'Food Tracker' ,user:req.user,dataset:foodTracked});}
+    })
+});
+
+
+
+
 
 
 module.exports =router;
