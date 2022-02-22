@@ -25,16 +25,16 @@ const foodSchemaDefinition = {
         required:true
     },
     user:{
-        type:mongo.Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     }
 };
 
 // Create a new mongoose schema
-const foodScheme = new mongo.Schema(foodSchemaDefinition);
+const foodScheme = new mongoose.Schema(foodSchemaDefinition);
 
 // Using the schema object, make a new mongoose model
-module.exports = mongo.model('foodModels', foodScheme);
+module.exports = mongoose.model('foodModels', foodScheme);
 
 
 
