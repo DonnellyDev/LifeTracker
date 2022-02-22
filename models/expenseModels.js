@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 
 // Create schema definition object
 const expenseSchemaDefiniton = {
-
+    description: {
+        type: String,
+        required: true
+    }
 };
 
 // Create a new mongoose schema
