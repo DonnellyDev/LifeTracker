@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 
 // Create schema definition object
 const waterSchemaDefinition = {
-
+    name:{
+        type:String,
+        required :true
+    },
 };
 
 // Create a new mongoose schema
