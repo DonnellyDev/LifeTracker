@@ -1,8 +1,12 @@
 // Import mongoose
 const mongoose = require('mongoose');
 
-// Create schema definition object
+ // Create schema definition object
 const exerciseSchemaDefinition = {
+    exercisename: {
+        type: String,
+        required: true
+    }
 
 };
 
