@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
-const usersRouter = require('./routes/users');
+const foodTrackerRouter = require('./routes/foodTrackerRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -38,12 +38,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // save forces the session to be saved back to the session store
 // even if it's never modified during the request
 app.use(session({
-  secret: "LifeRTa3545",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
 
-// Initalize Passport
+// Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,7 +58,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/foodTracker',foodTrackerRouter);
 //
 var connectionString = process.env.DB_CONN;
 

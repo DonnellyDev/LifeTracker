@@ -1,0 +1,36 @@
+<h1>{{title}}</h1>
+<form method="post">
+    <fieldset>
+        <label for="name" class="col-2">Food Name :</label>
+        <input name="name" id="name" required/>
+    </fieldset>
+    <fieldset>
+        <label for="mealTime" class="col-2">Meal Time :</label>
+        <select id="mealTime" name="mealTime" required>
+            <option value="BREAKFAST">Breakfast</option>
+            <option value="LUNCH">Lunch</option>
+            <option value="DINNER">Dinner</option>
+            <option value="SNACK">Snack</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <label for="mealType" class="col-2">Meal Type :</label>
+        <select id="mealType" name="mealType" required>
+            <option value="HOMEMADE">Homemade</option>
+            <option value="STORE-BOUGHT">Store-Bought</option>
+            <option value="FAST-FOOD">Fast-Food</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <label for="descriptionFood" class="col-2">Add a description of the food :</label>
+        <textarea name="descriptionFood" id="descriptionFood" required></textarea>
+    </fieldset>
+    <fieldset>
+        <label for="eatenDate" class="col-2">Purchase/ Eaten Date:</label>
+        <input name="eatenDate" id="eatenDate" required type="date"/>
+    </fieldset>
+
+
+    {{! A Button}}
+    <button class="offset-3 btn-primary"> Add Entry </button>
+</form>
