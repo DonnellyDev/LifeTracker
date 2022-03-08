@@ -1,0 +1,25 @@
+{{#if user}}
+    <a href="/exerciseTracker/add">Add a new Exercise</a>
+{{/if}}
+<table class="table table-striped table-hover">
+    <thead>
+    <th>Exercise Name</th>
+    <th>Exercise Duration</th>
+    <th>Calories Burnt</th>
+    <th>Date </th>
+    </thead>
+    {{#each dataset}}
+        <tr>
+            <td>{{this.exerciseName}}</td>
+            <td>{{this.duration}}</td>
+            <td>{{this.caloriesBurnt}}</td>
+            <td>{{toShortDate this.date}}</td>
+            {{#if ../user}}
+            <td>
+                <a href="/exercisetracker/edit/{{this.id}}" class="btn btn-primary">Edit</a>
+                <a href="/exercisetracker/delete/{{this.id}}" class="btn bg-danger" onclick="function confirmDeletion() {return confirm('Are you sure? You want to delete this exercise.');}" >Delete</a>
+            </td>
+            {{/if}}
+        </tr>
+    {{/each}}
+</table>
