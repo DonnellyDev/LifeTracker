@@ -16,8 +16,8 @@
             <td>{{toShortDate this.date}}</td>
             {{#if ../user}}
             <td>
-                <a href="/exercisetracker/edit/{{this.id}}" class="btn btn-primary">Edit</a>
-                <a href="/exercisetracker/delete/{{this.id}}" class="btn bg-danger" onclick="function confirmDeletion() {return confirm('Are you sure? You want to delete this exercise.');}" >Delete</a>
+                <a href="/exerciseTracker/edit/{{this.id}}" class="btn btn-primary">Edit</a>
+                <a href="/exerciseTracker/delete/{{this.id}}" class="btn bg-danger" onclick="function confirmDeletion() {return confirm('Are you sure? You want to delete this exercise.');}" >Delete</a>
             </td>
             {{/if}}
         </tr>

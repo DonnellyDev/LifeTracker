@@ -59,8 +59,7 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
         date:req.body.date,
         user:req.user},
         (err)=> {
-            if(err){console.log(err)}
-            else{res.render('exerciseTracker/indexExerciseTracker', { title: 'Exercise Tracker' ,user:req.user,dataset:exercise});}
+            if(err){console.log(err)}else{res.redirect('/exerciseTracker')}
     })
 });
 
