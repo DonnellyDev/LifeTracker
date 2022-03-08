@@ -75,8 +75,7 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
             date:req.body.eatenDate,
             user:req.user},
         (err)=> {
-            if(err){console.log(err)}
-            else{res.render('foodTracker/indexFoodTracker', { title: 'Food Tracker' ,user:req.user,dataset:foodTracked});}
+            if(err){console.log(err)}else{res.redirect('/foodtracker')}
     })
 });
 
