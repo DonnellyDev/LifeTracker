@@ -1,18 +1,19 @@
 // Import mongoose
 const mongoose = require('mongoose');
+const mongo = require("mongoose");
 
 // Create schema definition object
 const exerciseSchemaDefinition = {
     exerciseName: {
         type: String,
-        enum: ['Walking', 'Jogging', 'Yoga', 'Push-ups', 'Squats'],
+        enum: ['WALKING', 'JOGGING', 'YOGA', 'PUSH-UPS', 'SQUATS'],
         required: true
     },
     duration: {
         type: Number,
         required: true
     },
-    calorisBurn: {
+    caloriesBurnt: {
         type: Number,
         required: true
     },

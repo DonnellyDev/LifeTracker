@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<form method="post">
+    <fieldset>
+        <label for="exerciseName" class="col-2">Exercise Name :</label>
+        <select id="exerciseName" name="exerciseName" required/>
+            {{createOption 'WALKING' exercisetracker.exerciseName}}
+            {{createOption 'JOGGING' exercisetracker.exerciseName}}
+            {{createOption 'YOGA' exercisetracker.exerciseName}}
+            {{createOption 'PUSH-UPS' exercisetracker.exerciseName}}
+            {{createOption 'SQUATS' exercisetracker.exerciseName}}
+        </select>
+    </fieldset>
+    <fieldset>
+        <label for="duration" class="col-2">Exercise Duration :</label>
+        <input name="duration" id="duration" required value="{{exercisetracker.duration}}" type="number"/>
+    </fieldset>
+        <fieldset>
+        <label for="caloriesBurnt" class="col-2">Calories Burnt :</label>
+        <input name="caloriesBurnt" id="caloriesBurnt" required value="{{exercisetracker.caloriesBurnt}}" type="number"/>
+    </fieldset>
+    <fieldset>
+        <label for="date" class="col-2">Exercise Date :</label>
+        <input name="date" id="date" required value="{{toShortDate exercisetracker.date}}" type="date"/>        
+    </fieldset>
+    {{! A Button}}
+    <button class="offset-3 btn-primary"> Add Exercise</button>
+</form>
