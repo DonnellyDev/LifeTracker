@@ -35,7 +35,7 @@ router.get('/edit/:_id', IsLoggedIn,function(req, res) {
 router.get('/delete/:_id', IsLoggedIn,function(req, res) {
     exercise.remove({_id:req.params._id},(error => {
         if(error){console.log(error);}
-        else{res.redirect('/exercisetracker');}
+        else{res.redirect('/exerciseTracker');}
     }));
 });
 
@@ -47,7 +47,7 @@ router.post('/add',IsLoggedIn,(req, res, next) => {
         date:req.body.date,
         user:req.user},
         (err)=> {
-        if(err){console.log(err)}else{res.redirect('/exercisetracker')}
+        if(err){console.log(err)}else{res.redirect('/exerciseTracker')}
     });
 });
 
@@ -60,7 +60,7 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
         user:req.user},
         (err)=> {
             if(err){console.log(err)}
-            else{res.render('exerciseTracker/editExerciseTracker', { title: 'Exercise Tracker' ,user:req.user,dataset:exercise});}
+            else{res.render('exerciseTracker/indexExerciseTracker', { title: 'Exercise Tracker' ,user:req.user,dataset:exercise});}
     })
 });
 
