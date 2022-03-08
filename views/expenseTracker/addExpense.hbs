@@ -1,0 +1,33 @@
+<h1>{{title}}</h1>
+<form method="post">
+    <fieldset>
+        <label for="date" >Date:</label>
+        <input Date="date" id="date" required/>
+    </fieldset>
+    <fieldset>
+        <label for="account" >Account :</label>
+        <select id="account" name="account" required>
+            <option value="Savings">Savings</option>
+            <option value="Checkin">Check-in</option>
+            <option value="Credit">Credit</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <label for="amount" datatype="number" >Amount :</label>
+        <textarea name="amount" id="amount" required></textarea>
+    </fieldset>
+    <fieldset>
+        <label for="descriptionExpense" >Add a description of the Expense :</label>
+        <textarea name="descriptionExpense" id="descriptionExpense" required></textarea>
+    </fieldset>
+
+    <fieldset>
+        <label for="note" >Add a note :</label>
+        <textarea name="note" id="note" ></textarea>
+    </fieldset>
+
+
+
+    {{! A Button}}
+    <button class="offset-3 btn-primary"> Add Entry </button>
+</form>
