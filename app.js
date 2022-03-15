@@ -78,7 +78,7 @@ const hbs = require('hbs');
 hbs.registerHelper('createOption', (currentValue, selectedValue) => {
   //initialize a attribute
   let selectedAttribute = '';
-  if (currentValue == selectedValue) {
+  if (currentValue === selectedValue) {
     selectedAttribute = 'selected'
   }
   // render html code for an <option> element
@@ -88,7 +88,8 @@ hbs.registerHelper('createOption', (currentValue, selectedValue) => {
 
 // helper function to format date values
 hbs.registerHelper('toShortDate', (longDateValue) => {
-  return new hbs.SafeString(longDateValue.toLocaleDateString('en-CA'));
+  let options ={timeZone:'UTC'}
+  return new hbs.SafeString(longDateValue.toLocaleDateString('en-CA',options));
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
