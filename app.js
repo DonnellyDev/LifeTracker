@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
 const foodTrackerRouter = require('./routes/foodTrackerRouter');
+const exerciseTrackerRouter = require('./routes/exerciseTrackerRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -59,6 +60,7 @@ passport.deserializeUser(User.deserializeUser());
 // Routers
 app.use('/', indexRouter);
 app.use('/foodTracker',foodTrackerRouter);
+app.use('/exerciseTracker', exerciseTrackerRouter);
 //
 var connectionString = process.env.DB_CONN;
 
@@ -76,7 +78,7 @@ const hbs = require('hbs');
 hbs.registerHelper('createOption', (currentValue, selectedValue) => {
   //initialize a attribute
   let selectedAttribute = '';
-  if (currentValue == selectedValue) {
+  if (currentValue === selectedValue) {
     selectedAttribute = 'selected'
   }
   // render html code for an <option> element
@@ -86,7 +88,8 @@ hbs.registerHelper('createOption', (currentValue, selectedValue) => {
 
 // helper function to format date values
 hbs.registerHelper('toShortDate', (longDateValue) => {
-  return new hbs.SafeString(longDateValue.toLocaleDateString('en-CA'));
+  let options ={timeZone:'UTC'}
+  return new hbs.SafeString(longDateValue.toLocaleDateString('en-CA',options));
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
