@@ -21,6 +21,10 @@ const userSchemaDefinition = { // Add field according to the needs of user
     exerciseTracking:[{
         type: mongoose.Schema.Types.ObjectId,
         ref:"exerciseModels"
+    }],
+    expenseTracking:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"expenseModels"
     }]
 };
 

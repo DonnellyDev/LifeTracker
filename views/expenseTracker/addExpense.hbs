@@ -1,11 +1,11 @@
 <h1>{{title}}</h1>
 <form method="post">
     <fieldset>
-        <label for="date" >Date:</label>
-        <input Date="date" id="date" required/>
+        <label for="date" class="col-2" >Date:</label>
+        <input type="date" id="date" required/>
     </fieldset>
     <fieldset>
-        <label for="account" >Account :</label>
+        <label for="account"  class="col-2">Account :</label>
         <select id="account" name="account" required>
             <option value="Savings">Savings</option>
             <option value="Checkin">Check-in</option>
@@ -13,16 +13,16 @@
         </select>
     </fieldset>
     <fieldset>
-        <label for="amount" datatype="number" >Amount :</label>
-        <textarea name="amount" id="amount" required></textarea>
+        <label for="amount" class="col-2">Amount :</label>
+        <input type="number" id="amount" required/>
     </fieldset>
     <fieldset>
-        <label for="descriptionExpense" >Add a description of the Expense :</label>
+        <label for="descriptionExpense" class="col-2">Add a description of the Expense :</label>
         <textarea name="descriptionExpense" id="descriptionExpense" required></textarea>
     </fieldset>
 
     <fieldset>
-        <label for="note" >Add a note :</label>
+        <label for="note" class="col-2">Add a note :</label>
         <textarea name="note" id="note" ></textarea>
     </fieldset>
 
