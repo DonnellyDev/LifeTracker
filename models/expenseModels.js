@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 // Create schema definition object
-const expenseSchemaDefiniton = {
+const expenseSchemaDefinition = {
     date:{
         type:Date,
         required:true
@@ -12,7 +12,6 @@ const expenseSchemaDefiniton = {
         type:String,
         required :true
     },
-
     description: {
         type: String,
         required: true
@@ -32,9 +31,10 @@ const expenseSchemaDefiniton = {
 };
 
 // Create a new mongoose schema
-const expenseSchema = new mongoose.Schema(expenseSchemaDefiniton);
+const expenseSchema = new mongoose.Schema(expenseSchemaDefinition);
 
 // Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('expenseModels', expenseSchema);
+module.exports = mongoose.model('expenseModels', expenseSchema);
+
 
 

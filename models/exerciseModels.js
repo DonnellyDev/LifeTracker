@@ -1,6 +1,6 @@
 // Import mongoose
 const mongoose = require('mongoose');
-const mongo = require("mongoose");
+
 
 // Create schema definition object
 const exerciseSchemaDefinition = {
@@ -22,7 +22,7 @@ const exerciseSchemaDefinition = {
         required: true
     },
     user: {
-        type: mongo.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
 };

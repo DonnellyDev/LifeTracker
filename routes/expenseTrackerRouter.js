@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModels');
-const FoodEntries = require('../models/expenseModels');
+const ExpenseEntries= require('../models/expenseModels');
 const passport = require('passport');
 
 
@@ -18,8 +18,8 @@ function IsLoggedIn(req,res,next){
  * Get Routes
  ---------------------------*/
 
-router.get('/', IsLoggedIn,function(req, res, next) {
-    FoodEntries.find({user:req.user},(err,expenseTracked)=>{
+router.get('/', IsLoggedIn,function(req, res, next){
+    ExpenseEntries.find({user:req.user},(err,expenseTracked)=>{
         if(err){console.log(err);}
         else{res.render('expenseTracker/indexExpense', { title: 'expense Tracker' ,user:req.user,dataset:expenseTracked});}
     })
@@ -27,7 +27,7 @@ router.get('/', IsLoggedIn,function(req, res, next) {
 
 /** Get Add Page **/
 router.get('/add', IsLoggedIn,function(req, res, next) {
-    FoodEntries.find({user:req.user},(err,expenseTracked)=>{
+    ExpenseEntries.find({user:req.user},(err,expenseTracked)=>{
         if(err){console.log(err);}
         else{res.render('expenseTracker/addExpense', { title: 'Add a Expense' ,user:req.user,dataset:expenseTracked});}
 
@@ -36,7 +36,7 @@ router.get('/add', IsLoggedIn,function(req, res, next) {
 
 /** Get Edit Page **/
 router.get('/edit/:_id', IsLoggedIn,function(req, res, next) {
-    FoodEntries.findById(req.params._id,(err,foodTracked)=>{
+    ExpenseEntries.findById(req.params._id,(err,foodTracked)=>{
         if(err){console.log(err);}
         else{res.render('expenseTracker/editExpenseTracker', { title: 'Update a Expense' ,user:req.user,expenseItem:expenseTracked});}
     })
@@ -44,7 +44,7 @@ router.get('/edit/:_id', IsLoggedIn,function(req, res, next) {
 
 /** Delete Handler **/
 router.get('/delete/:_id',IsLoggedIn,function (req,res,next){
-    FoodEntries.remove({_id:req.params._id},(error => {
+    ExpenseEntries.remove({_id:req.params._id},(error => {
         if(error){console.log(error);}else {res.redirect('/expenseTracker');}
     }));
 });
@@ -54,10 +54,11 @@ router.get('/delete/:_id',IsLoggedIn,function (req,res,next){
  ---------------------------*/
 
 router.post('/add',IsLoggedIn,(req, res, next) => {
-    FoodEntries.create({
+    ExpenseEntries.create({
             date:req.body.date,
             account: req.body.account,
-            description: req.body.description,
+            description: req.body.descriptionExpense,
+            amount:req.body.amount,
             note:req.body.note,
             user:req.user},
         (err)=> {
@@ -66,7 +67,7 @@ router.post('/add',IsLoggedIn,(req, res, next) => {
 });
 
 router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
-    FoodEntries.findOneAndUpdate({_id:req.params._id},{
+    ExpenseEntries.findOneAndUpdate({_id:req.params._id},{
             date:req.body.date,
             account: req.body.account,
             description: req.body.description,

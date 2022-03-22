@@ -64,7 +64,7 @@ app.use('/foodTracker',foodTrackerRouter);
 app.use('/exerciseTracker', exerciseTrackerRouter);
 app.use('/expenseTracker', expenseTrackerRouter);
 //
-var connectionString = process.env.DB_CONN;
+const connectionString = process.env.DB_CONN;
 
 mongoose.connect(connectionString , {useNewUrlParser: true, useUnifiedTopology: true })
     .then((message) => {
