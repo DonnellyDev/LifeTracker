@@ -17,6 +17,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/indexRouter');
 const foodTrackerRouter = require('./routes/foodTrackerRouter');
 const exerciseTrackerRouter = require('./routes/exerciseTrackerRouter');
+const expenseTrackerRouter = require('./routes/expenseTrackerRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -61,6 +62,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', indexRouter);
 app.use('/foodTracker',foodTrackerRouter);
 app.use('/exerciseTracker', exerciseTrackerRouter);
+app.use('/expenseTracker', expenseTrackerRouter);
 //
 var connectionString = process.env.DB_CONN;
 

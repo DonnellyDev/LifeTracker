@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+
+<form method="post">
+    <fieldset>
+        <label for="date" class="col-2">Date:</label>
+        <input name="date" id="date" value="{{expense.date}}" required/>
+    </fieldset>
+    <fieldset>
+        <label for="account" class="col-2">Account :</label>
+        <select id="account" name="account" required>
+            {{createOption 'Savings' expense.account}}
+            {{createOption 'Checkin' expense.account}}
+            {{createOption 'Credit' expense.account}}
+
+        </select>
+    </fieldset>
+    <fieldset>
+        <label for="amount" class="col-2">Amount :</label>
+        <input name="amount" id="amount" value="{{expense.amount}}" required/>
+    </fieldset>
+    <fieldset>
+        <label for="descriptionExpense" class="col-2">Add a description of the Expense :</label>
+        <textarea name="descriptionExpense" id="descriptionExpense" placeholder="{{expense.description}}" required></textarea>
+    </fieldset>
+    <fieldset>
+        <label for="note" class="col-2">Expense Date:</label>
+        <input name="note" id="note" required value="{{toShortDate expense.date}}" type="date"/>
+    </fieldset>
+
+    {{! A Button}}
+    <button class="offset-3 btn-primary"> Add Entry </button>
+</form>
