@@ -35,7 +35,7 @@ router.get('/add', IsLoggedIn,function(req, res, next) {
 router.get('/edit/:_id', IsLoggedIn,function(req, res, next) {
     waterEntries.findById(req.params._id,(err,waterTracked)=>{
         if(err){console.log(err);}
-        else{res.render('waterTracker/editWaterTracker', { title: 'Update a Water Item' ,user:req.user,foodItem:waterTracked});}
+        else{res.render('waterTracker/editWaterTracker', { title: 'Update a Water Item' ,user:req.user,waterItem:waterTracked});}
     })
 });
 

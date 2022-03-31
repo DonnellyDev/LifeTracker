@@ -26,6 +26,10 @@ const waterSchemaDefinition = {
     intakeTime: {
         type: String,
         required: true
+    },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
     }
 };
 
@@ -33,6 +37,6 @@ const waterSchemaDefinition = {
 const waterSchema = new mongoose.Schema(waterSchemaDefinition);
 
 // Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('waterModels', waterSchema);
+module.exports = mongoose.model('waterModels', waterSchema);
 
 
