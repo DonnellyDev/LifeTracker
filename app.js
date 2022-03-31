@@ -18,6 +18,7 @@ const indexRouter = require('./routes/indexRouter');
 const foodTrackerRouter = require('./routes/foodTrackerRouter');
 const exerciseTrackerRouter = require('./routes/exerciseTrackerRouter');
 const expenseTrackerRouter = require('./routes/expenseTrackerRouter');
+const waterTrackerRouter = require('./routes/waterTrackerRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -63,6 +64,7 @@ app.use('/', indexRouter);
 app.use('/foodTracker',foodTrackerRouter);
 app.use('/exerciseTracker', exerciseTrackerRouter);
 app.use('/expenseTracker', expenseTrackerRouter);
+app.use('/waterTracker', waterTrackerRouter);
 //
 const connectionString = process.env.DB_CONN;
 

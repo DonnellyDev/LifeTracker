@@ -26,6 +26,10 @@ const userSchemaDefinition = { // Add field according to the needs of user
         type: mongoose.Schema.Types.ObjectId,
         ref:"expenseModels"
     }],
+    waterTracking:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"waterModels"
+    }],
 };
 
 // Create a new mongoose schema
