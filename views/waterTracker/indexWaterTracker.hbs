@@ -1,0 +1,31 @@
+{{#if user}}
+    <a href="/waterTracker/add">Add a new Water Entry</a>
+{{/if}}
+<table class="table table-striped table-hover">
+    <thead>
+    <th>Liquid Name</th>
+    <th>Your Current Weight?</th>
+    <th>Intake Amount</th>
+    <th>Date </th>
+    <th>Intake Time of the Day</th>
+    <th>Intake Time</th>
+    </thead>
+    {{#each dataset}}
+        <tr>
+            <td>{{this.typeOfLiquid}}</td>
+            <td>{{this.yourCurrentWeight}}</td>
+            <td>{{this.intakeAmount}}</td>
+            <td>{{toShortDate this.date}}</td>
+            <td>{{this.intakeTimeOfDay}}</td>
+            <td>{{this.intakeTime}}</td>
+            {{#if ../user}}
+
+                <td>
+                    <a href="/waterTracker/edit/{{this.id}}" class="btn btn-primary" >Edit</a>
+                    <a href="/waterTracker/delete/{{this.id}}" class="btn bg-danger" onclick="function confirmDeletion() {return confirm('Are you sure?');}" >Delete</a>
+                </td>
+            {{/if}}
+
+        </tr>
+    {{/each}}
+</table>

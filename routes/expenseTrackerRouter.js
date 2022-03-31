@@ -36,7 +36,7 @@ router.get('/add', IsLoggedIn,function(req, res, next) {
 
 /** Get Edit Page **/
 router.get('/edit/:_id', IsLoggedIn,function(req, res, next) {
-    ExpenseEntries.findById(req.params._id,(err,foodTracked)=>{
+    ExpenseEntries.findById(req.params._id,(err,expenseTracked)=>{
         if(err){console.log(err);}
         else{res.render('expenseTracker/editExpenseTracker', { title: 'Update a Expense' ,user:req.user,expenseItem:expenseTracked});}
     })

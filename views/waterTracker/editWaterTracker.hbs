@@ -1,0 +1,41 @@
+<h1>{{title}}</h1>
+
+<form method="post">
+    <fieldset>
+        <label for="typeOfLiquid" class="col-2">Liquid Name :</label>
+        <input name="typeOfLiquid" id="typeOfLiquid" value="{{waterItem.typeOfLiquid}}" required/>
+    </fieldset>
+
+    <fieldset>
+        <label for="yourCurrentWeight" class="col-2">Current Body Weight :</label>
+        <input name="yourCurrentWeight" id="yourCurrentWeight" value="{{waterItem.yourCurrentWeight}}" />
+    </fieldset>
+
+    <fieldset>
+        <label for="intakeAmount" class="col-2">Amount of Intake :</label>
+        <input name="intakeAmount" id="intakeAmount" value="{{waterItem.intakeAmount}}" required/>
+    </fieldset>
+
+    <fieldset>
+        <label for="date" class="col-2">Date :</label>
+        <input name="date" id="date" required value="{{toShortDate foodItem.date}}" required type="date"/>
+    </fieldset>
+
+    <fieldset>
+        <label for="intakeTimeOfDay" class="col-2">Intake Time of Day :</label>
+        <select id="intakeTimeOfDay" name="intakeTimeOfDay" required>
+            {{createOption 'MORNING' waterItem.intakeTimeOfDay}}
+            {{createOption 'AFTERNOON' waterItem.intakeTimeOfDay}}
+            {{createOption 'EVENING' waterItem.intakeTimeOfDay}}
+            {{createOption 'NIGHT' waterItem.intakeTimeOfDay}}
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <label for="intakeTime" class="col-2">Time of Intake :</label>
+        <input name="intakeTime" id="intakeTime" value="{{waterItem.intakeTime}}" required/>
+    </fieldset>
+
+    {{! A Button}}
+    <button class="offset-3 btn-primary"> Add Entry </button>
+</form>
