@@ -62,7 +62,22 @@ router.post('/add',IsLoggedIn,(req, res, next) => {
         date:req.body.eatenDate,
         user:req.user},
         (err)=> {
-        if(err){console.log(err)}else{res.redirect('/foodtracker')}
+            if (err) {
+                console.log(err)
+            } else {
+                FoodEntries.find({user:req.user},(error, results) =>{
+                    if (error){console.log(error)}
+                    else{
+                        User.findOneAndUpdate({_id: req.user._id}, {
+                            foodTracking:results
+                        },(err1)=>{
+                            if(err1){console.log(err1)}
+                        });
+                        res.redirect('/foodtracker');
+                        }
+                } )
+
+            }
     });
 });
 
@@ -75,7 +90,19 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
             date:req.body.eatenDate,
             user:req.user},
         (err)=> {
-            if(err){console.log(err)}else{res.redirect('/foodtracker')}
+            if(err){console.log(err)}else{
+                FoodEntries.find({user:req.user},(error, results) =>{
+                    if (error){console.log(error)}
+                    else{
+                        User.findOneAndUpdate({_id: req.user._id}, {
+                            foodTracking:results
+                        },(err1)=>{
+                            if(err1){console.log(err1)}
+                        });
+                        res.redirect('/foodtracker');
+                    }
+                } )
+            }
     })
 });
 
