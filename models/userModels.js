@@ -1,7 +1,6 @@
 // Import mongoose
 const mongoose = require('mongoose');
 const foodTracking = require('./foodModels').schema;
-
 const plm = require('passport-local-mongoose');
 
 

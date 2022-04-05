@@ -1,3 +1,4 @@
+
 // Import mongoose
 const mongoose = require('mongoose');
 
@@ -32,6 +33,7 @@ const foodSchemaDefinition = {
 
 // Create a new mongoose schema
 const foodScheme = new mongoose.Schema(foodSchemaDefinition);
+
 
 // Using the schema object, make a new mongoose model
 module.exports = mongoose.model('foodModels', foodScheme);

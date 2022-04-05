@@ -42,7 +42,7 @@ router.get('/login', (req, res, next) => {
 // POST handler for /login
 // Syntax will be a bit different since login will be handled by passport
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/userDashboard',
+  successRedirect: '/user',
   failureRedirect: '/login',
   failureMessage: 'Invalid credentials'
 }));
@@ -81,7 +81,7 @@ router.post('/register',checkConfirmPassword, (req, res, next) => {
         else {
           // log user in
           req.login(newUser, (err) => {
-            res.redirect('/userDashboard');
+            res.redirect('/user');
           });
         }
       });
