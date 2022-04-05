@@ -1,7 +1,9 @@
 // Import mongoose
 const mongoose = require('mongoose');
-
+const foodTracking = require('./foodModels').schema;
 const plm = require('passport-local-mongoose');
+
+
 
 // Create schema definition object
 const userSchemaDefinition = { // Add field according to the needs of user
@@ -13,11 +15,17 @@ const userSchemaDefinition = { // Add field according to the needs of user
         type: String,
 
     },
+    Personals: {
+        type:Object,
+        name:
+            {
+                firstName: String,
+                lastName: String
+            },
+            required: true
+    },
     // connecting user to their food tracker
-    foodTracking:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"foodEntries"
-    }],
+    foodTracking:[foodTracking],
     exerciseTracking:[{
         type: mongoose.Schema.Types.ObjectId,
         ref:"exerciseModels"
@@ -38,9 +46,11 @@ const userSchema = new mongoose.Schema(userSchemaDefinition);
 // Use passport-local-mongoose to indicate this is a special authentication model
 // plugin() adds plm functionality to our model
 // i.e. hashing/salting password, and handling authentication attempts
+userSchema.virtual('fullName').get(function (){
+    return this.Personals.name.firstName + ' '+this.Personals.name.lastName;
+});
 userSchema.plugin(plm);
-
 // Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('users', userSchema);
+module.exports = mongoose.model('users', userSchema);
 
 

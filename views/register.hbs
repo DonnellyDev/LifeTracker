@@ -1,10 +1,21 @@
 <h1>
     Register
 </h1>
+
+{{#if message}}
+    <div class="alert alert-danger">
+        {{message}}
+
+    </div>
+{{else}}
+    <div class="alert alert-info">
+        Please create your account
+    </div>
+{{/if}}
 <form method="post">
     <fieldset class="form-group">
         <label for="username" class="col-2 control-label">
-            Username: *
+            Username:
         </label>
         <input
                 name="username"
@@ -14,9 +25,34 @@
                 placeholder="email@email.com"
         />
     </fieldset>
+
+    <fieldset class="form-group">
+        <label for="firstName" class="col-2 control-label">
+            First Name:
+        </label>
+        <input
+                name="firstName"
+                id="firstName"
+                required
+                type="text"
+                placeholder="First Name"
+        />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="lastName" class="col-2 control-label">
+            Last Name:
+        </label>
+        <input
+                name="lastName"
+                id="lastName"
+                required
+                type="text"
+                placeholder="Last Name"
+        />
+    </fieldset>
     <fieldset class="form-group">
         <label for="password" class="col-2 control-label">
-            Password: *
+            Password:
         </label>
         <input
                 name="password"
@@ -27,21 +63,25 @@
         />
     </fieldset>
     <fieldset class="form-group">
-        <label for="confirm" class="col-2 control-label">
-            Confirm: *
+        <label for="confirmPWD" class="col-2 control-label">
+            Confirm:
         </label>
         <input
-                name="confirm"
-                id="confirm"
+                name="confirmPWD"
+                id="confirmPWD"
                 type="password"
                 required
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         />
+        <small> Passwords need to contain at least 1 capital and lower cased letter and number. Also, must be at least 8 characters long</small>
+
     </fieldset>
+
     <fieldset class="form-group">
         <button class="btn btn-info offset-3">
             Register
         </button>
+        <small>All fields are required for registration </small>
         <hr />
         Already have an account?
         <a href="/login" title="Login">
