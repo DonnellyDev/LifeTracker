@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 const foodTracking = require('./foodModels').schema;
 const exerciseTracking = require('./exerciseModels').schema;
+const waterTracking = require('./waterModels').schema;
+
 const plm = require('passport-local-mongoose');
-
-
 
 // Create schema definition object
 const userSchemaDefinition = { // Add field according to the needs of user
@@ -32,10 +32,7 @@ const userSchemaDefinition = { // Add field according to the needs of user
         type: mongoose.Schema.Types.ObjectId,
         ref:"expenseModels"
     }],
-    waterTracking:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"waterModels"
-    }],
+    waterTracking:[waterTracking],
 };
 
 // Create a new mongoose schema
