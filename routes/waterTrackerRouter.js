@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const waterEntries = require('../models/waterModels');
+const User = require('../models/userModels');
+const FoodEntries = require("../models/foodModels");
 
 function IsLoggedIn(req,res,next){
     if (req.isAuthenticated){
@@ -60,8 +62,22 @@ router.post('/add',IsLoggedIn,(req, res, next) => {
             intakeTime: req.body.intakeTime,
             user:req.user},
         (err)=> {
-            if(err){console.log(err)}else{res.redirect('/waterTracker')}
-        });
+            if (err) {
+                console.log(err)
+            } else {
+                waterEntries.find({user:req.user},(error, results) =>{
+                    if (error){console.log(error)}
+                    else{
+                        User.findOneAndUpdate({_id: req.user._id}, {
+                            waterTracking:results
+                        },(err1)=>{
+                            if(err1){console.log(err1)}
+                        });
+                        res.redirect('/watertracker');
+                    }
+                } )
+            }
+    });
 });
 
 router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
@@ -74,7 +90,19 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
             intakeTime: req.body.intakeTime,
             user:req.user},
         (err)=> {
-            if(err){console.log(err)}else{res.redirect('/waterTracker')}
+            if(err){console.log(err)}else{
+                waterEntries.find({user:req.user},(error, results) =>{
+                    if (error){console.log(error)}
+                    else{
+                        User.findOneAndUpdate({_id: req.user._id}, {
+                            waterTracking:results
+                        },(err1)=>{
+                            if(err1){console.log(err1)}
+                        });
+                        res.redirect('/watertracker');
+                    }
+                } )
+            }
         })
 });
 
