@@ -7,8 +7,6 @@ const waterTracking = require('./waterModels').schema;
 
 const plm = require('passport-local-mongoose');
 
-
-
 // Create schema definition object
 const userSchemaDefinition = { // Add field according to the needs of user
     username: {
@@ -32,6 +30,7 @@ const userSchemaDefinition = { // Add field according to the needs of user
     foodTracking: [foodTracking],
     exerciseTracking:[exerciseTracking],
     expenseTracking:[expenseTracking],
+
     waterTracking:[waterTracking],
 };
 
