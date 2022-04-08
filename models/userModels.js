@@ -1,6 +1,10 @@
 // Import mongoose
 const mongoose = require('mongoose');
 const foodTracking = require('./foodModels').schema;
+const exerciseTracking = require('./exerciseModels').schema;
+const expenseTracking = require('./expenseModels').schema;
+const waterTracking = require('./waterModels').schema;
+
 const plm = require('passport-local-mongoose');
 
 
@@ -25,19 +29,10 @@ const userSchemaDefinition = { // Add field according to the needs of user
             required: true
     },
     // connecting user to their food tracker
-    foodTracking:[foodTracking],
-    exerciseTracking:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"exerciseModels"
-    }],
-    expenseTracking:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"expenseModels"
-    }],
-    waterTracking:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"waterModels"
-    }],
+    foodTracking: [foodTracking],
+    exerciseTracking:[exerciseTracking],
+    expenseTracking:[expenseTracking],
+    waterTracking:[waterTracking],
 };
 
 // Create a new mongoose schema

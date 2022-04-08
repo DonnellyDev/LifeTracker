@@ -52,7 +52,7 @@ app.use(passport.session());
 
 // Link Passport to Users Model
 const User = require('./models/userModels');
-passport.use(User.createStrategy());
+passport.use( User.createStrategy());
 
 // Set passport to w/r users to/from session object
 passport.serializeUser(User.serializeUser());

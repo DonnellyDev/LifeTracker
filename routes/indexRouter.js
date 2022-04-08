@@ -48,7 +48,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 // GET handler for /register
-router.get('/register', (req, res, next) => {
+router.get('/register',  (req, res, next) => {
   // Obtain messages if any
   let messages = req.session.messages || [];
   // Pass messages to view
@@ -60,7 +60,6 @@ router.get('/register', (req, res, next) => {
 
 //POST handler for /register
 router.post('/register',checkConfirmPassword, (req, res, next) => {
-
   // Create a new user based on the information from the page
   User.register(new User({
         username: req.body.username,
@@ -68,9 +67,7 @@ router.post('/register',checkConfirmPassword, (req, res, next) => {
           name:{
             firstName:req.body.firstName,
             lastName:req.body.lastName
-          }
-    }
-      }),
+          }}}),
       req.body.password,
       (err, newUser) => {
         if (err) {

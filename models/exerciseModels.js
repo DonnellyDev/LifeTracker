@@ -31,6 +31,6 @@ const exerciseSchemaDefinition = {
 const exerciseSchema = new mongoose.Schema(exerciseSchemaDefinition);
 
 // Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('exerciseModels', exerciseSchema);
+module.exports = mongoose.model('exerciseModels', exerciseSchema);
 
 

@@ -1,0 +1,54 @@
+{{#if message}}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{{else}}
+    <div class="alert alert-info">
+        Please Update Your Account information
+    </div>
+{{/if}}
+<form method="post">
+    <fieldset class="form-group">
+        <label for="username" class="col-2 control-label">
+            Username:
+        </label>
+        <input
+                name="username"
+                id="username"
+                required
+                type="email"
+                value="{{user.username}}"
+        />
+    </fieldset>
+
+    <fieldset class="form-group">
+        <label for="firstName" class="col-2 control-label">
+            First Name:
+        </label>
+        <input
+                name="firstName"
+                id="firstName"
+                required
+                type="text"
+                value="{{user.Personals.name.firstName}}"
+        />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="lastName" class="col-2 control-label">
+            Last Name:
+        </label>
+        <input
+                name="lastName"
+                id="lastName"
+                required
+                type="text"
+                value="{{user.Personals.name.lastName}}"
+        />
+    </fieldset>
+    <a href="/user/updatePassword" class="btn btn-warning "> Update Password</a>
+    <fieldset class="form-group">
+        <button class="btn btn-info offset-3">
+            Update
+        </button>
+    </fieldset>
+</form>
