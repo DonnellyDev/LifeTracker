@@ -4,7 +4,7 @@ const foodTracking = require('./foodModels').schema;
 const exerciseTracking = require('./exerciseModels').schema;
 const expenseTracking = require('./expenseModels').schema;
 const waterTracking = require('./waterModels').schema;
-
+const expenseTracking = require('./expenseModels').schema;
 const plm = require('passport-local-mongoose');
 
 // Create schema definition object
@@ -30,7 +30,6 @@ const userSchemaDefinition = { // Add field according to the needs of user
     foodTracking: [foodTracking],
     exerciseTracking:[exerciseTracking],
     expenseTracking:[expenseTracking],
-
     waterTracking:[waterTracking],
 };
 
