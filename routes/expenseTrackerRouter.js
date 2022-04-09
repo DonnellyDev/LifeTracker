@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/userModels');
 const ExpenseEntries= require('../models/expenseModels');
 const passport = require('passport');
-const exercise = require("../models/exerciseModels");
+
 
 
 
@@ -67,7 +67,7 @@ router.post('/add',IsLoggedIn,(req, res, next) => {
             if (err) {
                 console.log(err)
             } else {
-                express.find({user:req.user},(error, results) =>{
+                ExpenseEntries.find({user:req.user},(error, results) =>{
                     if (error){console.log(error)}
                     else{
                         User.findOneAndUpdate({_id: req.user._id}, {
@@ -92,7 +92,7 @@ router.post('/edit/:_id',IsLoggedIn,(req, res, next) => {
             user:req.user},
         (err)=> {
             if(err){console.log(err)}else{
-                express.find({user:req.user},(error, results) =>{
+                ExpenseEntries.find({user:req.user},(error, results) =>{
                     if (error){console.log(error)}
                     else{
                         User.findOneAndUpdate({_id: req.user._id}, {
