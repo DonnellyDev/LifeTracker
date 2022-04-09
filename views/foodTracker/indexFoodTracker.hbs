@@ -1,13 +1,13 @@
 {{#if user}}
     <a href="/foodTracker/add">Add a new Food Entry</a>
-{{/if}}
+
 <table class="table table-striped table-hover">
     <thead>
-    <th>Food Name</th>
-    <th>What meal time?</th>
-    <th>Where did you get it?</th>
-    <th>Description </th>
-    <th> Date</th>
+        <th>Food Name</th>
+        <th>What meal time?</th>
+        <th>Where did you get it?</th>
+        <th>Description </th>
+        <th>Date</th>
     </thead>
     {{#each dataset}}
         <tr>
@@ -15,16 +15,18 @@
             <td>{{this.mealTime}}</td>
             <td>{{this.mealType}}</td>
             <td>{{this.description}}</td>
-
             <td>{{toShortDate this.date}}</td>
             {{#if ../user}}
-
             <td>
                 <a href="/foodTracker/edit/{{this.id}}" class="btn btn-primary" >Edit</a>
                 <a href="/foodTracker/delete/{{this.id}}" class="btn bg-danger" onclick="function confirmDeletion() {return confirm('Are you sure?');}" >Delete</a>
             </td>
             {{/if}}
-
         </tr>
     {{/each}}
 </table>
+{{else}}
+    <h1 class="text-center"> Please Log In to use the Tracking Features   </h1>
+    <a href="/login" class="w-50 m-auto btn-block btn-lg btn-success text-center"> Login</a>
+{{/if}}
+

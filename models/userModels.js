@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const foodTracking = require('./foodModels').schema;
 const exerciseTracking = require('./exerciseModels').schema;
+const expenseTracking = require('./expenseModels').schema;
 const waterTracking = require('./waterModels').schema;
 const expenseTracking = require('./expenseModels').schema;
 const plm = require('passport-local-mongoose');
@@ -26,7 +27,7 @@ const userSchemaDefinition = { // Add field according to the needs of user
             required: true
     },
     // connecting user to their food tracker
-    foodTracking:[foodTracking],
+    foodTracking: [foodTracking],
     exerciseTracking:[exerciseTracking],
     expenseTracking:[expenseTracking],
     waterTracking:[waterTracking],
