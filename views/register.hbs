@@ -1,7 +1,20 @@
-<h1>
-    Register
-</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
+<style>
+    h1{text-align: center;}
+</style>
+<div>
+<h1>Register</h1>
+</div>
 {{#if message}}
     <div class="alert alert-danger">
         {{message}}
@@ -10,82 +23,108 @@
 {{else}}
     <div class="alert alert-info">
         Please create your account
+        <br>
+        <small>All fields are required for registration </small>
     </div>
 {{/if}}
-<form method="post">
-    <fieldset class="form-group">
-        <label for="username" class="col-2 control-label">
-            Username:
-        </label>
-        <input
-                name="username"
-                id="username"
-                required
-                type="email"
-                placeholder="email@email.com"
-        />
-    </fieldset>
 
-    <fieldset class="form-group">
-        <label for="firstName" class="col-2 control-label">
-            First Name:
-        </label>
-        <input
-                name="firstName"
-                id="firstName"
-                required
-                type="text"
-                placeholder="First Name"
-        />
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="lastName" class="col-2 control-label">
-            Last Name:
-        </label>
-        <input
-                name="lastName"
-                id="lastName"
-                required
-                type="text"
-                placeholder="Last Name"
-        />
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="password" class="col-2 control-label">
-            Password:
-        </label>
-        <input
-                name="password"
-                id="password"
-                type="password"
-                required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        />
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="confirmPWD" class="col-2 control-label">
-            Confirm:
-        </label>
-        <input
-                name="confirmPWD"
-                id="confirmPWD"
-                type="password"
-                required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-        />
-        <small> Passwords need to contain at least 1 capital and lower cased letter and number. Also, must be at least 8 characters long</small>
+<section class="vh-100">
 
-    </fieldset>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form method="post">
+                    <fieldset class="form-group">
+                        <label for="username" class="col-3 control-label">
+                            Username:
+                        </label>
+                        <input
+                                name="username"
+                                id="username"
+                                required
+                                type="email"
+                                placeholder="email@email.com"
+                        />
+                    </fieldset>
 
-    <fieldset class="form-group">
-        <button class="btn btn-info offset-3">
-            Register
-        </button>
-        <small>All fields are required for registration </small>
-        <hr />
-        Already have an account?
-        <a href="/login" title="Login">
-            Login
-        </a>
-    </fieldset>
-</form>
+                    <fieldset class="form-group">
+                        <label for="firstName" class="col-3 control-label">
+                            First Name:
+                        </label>
+                        <input
+                                name="firstName"
+                                id="firstName"
+                                required
+                                type="text"
+                                placeholder="First Name"
+                        />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="lastName" class="col-3 control-label">
+                            Last Name:
+                        </label>
+                        <input
+                                name="lastName"
+                                id="lastName"
+                                required
+                                type="text"
+                                placeholder="Last Name"
+                        />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="password" class="col-3 control-label">
+                            Password:
+                        </label>
+                        <input
+                                name="password"
+                                id="password"
+                                type="password"
+                                required
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="confirmPWD" class="col-3 control-label">
+                            Confirm:
+                        </label>
+                        <input
+                                name="confirmPWD"
+                                id="confirmPWD"
+                                type="password"
+                                required
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        />
+                        <br>
+                        <small> Passwords need to contain at least 1 capital and lower cased letter and number. Also, must be at least 8 characters long</small>
+
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <button class="btn btn-info offset-3">
+                            Register
+                        </button>
+                        <hr/>
+                        Already have an account?
+                        <a href="/login" title="Login">
+                            Login
+                        </a>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="d-flex flex-column py-4 px-4 px-xl-5 bg-primary">
+            <div class="text-white">
+                <p style="text-align:center"> Copyright © 2022. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</section>
+</body>
+</html>

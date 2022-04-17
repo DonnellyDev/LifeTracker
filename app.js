@@ -35,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('assets'))
 
 // Configure passport module https://www.npmjs.com/package/express-session
 // secret is a salt value used for hashing
