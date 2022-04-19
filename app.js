@@ -11,12 +11,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-// const config = require('./config/globals');
 
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
 const foodTrackerRouter = require('./routes/foodTrackerRouter');
 const exerciseTrackerRouter = require('./routes/exerciseTrackerRouter');
+const expenseTrackerRouter = require('./routes/expenseTrackerRouter');
+const waterTrackerRouter = require('./routes/waterTrackerRouter');
+const userRouter = require('./routes/userRouter');
 
 // Passport Modules
 const passport =require('passport');
@@ -33,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('assets'))
 
 // Configure passport module https://www.npmjs.com/package/express-session
 // secret is a salt value used for hashing
@@ -50,7 +53,7 @@ app.use(passport.session());
 
 // Link Passport to Users Model
 const User = require('./models/userModels');
-passport.use(User.createStrategy());
+passport.use( User.createStrategy());
 
 // Set passport to w/r users to/from session object
 passport.serializeUser(User.serializeUser());
@@ -61,8 +64,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/', indexRouter);
 app.use('/foodTracker',foodTrackerRouter);
 app.use('/exerciseTracker', exerciseTrackerRouter);
+app.use('/expenseTracker', expenseTrackerRouter);
+app.use('/waterTracker', waterTrackerRouter);
+app.use('/user',userRouter);
 //
-var connectionString = process.env.DB_CONN;
+const connectionString = process.env.DB_CONN;
 
 mongoose.connect(connectionString , {useNewUrlParser: true, useUnifiedTopology: true })
     .then((message) => {

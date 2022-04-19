@@ -1,6 +1,6 @@
 // Import mongoose
 const mongoose = require('mongoose');
-const mongo = require("mongoose");
+
 
 // Create schema definition object
 const exerciseSchemaDefinition = {
@@ -22,7 +22,7 @@ const exerciseSchemaDefinition = {
         required: true
     },
     user: {
-        type: mongo.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }
 };
@@ -31,6 +31,6 @@ const exerciseSchemaDefinition = {
 const exerciseSchema = new mongoose.Schema(exerciseSchemaDefinition);
 
 // Using the schema object, make a new mongoose model
-module.exports = new mongoose.model('exerciseModels', exerciseSchema);
+module.exports = mongoose.model('exerciseModels', exerciseSchema);
 
 

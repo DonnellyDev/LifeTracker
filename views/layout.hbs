@@ -3,9 +3,15 @@
 <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/javascript/script.js"></script>
+    <link rel="stylesheet" href="/public/stylesheets/style.css">
+    <script src="./public/javascripts/script.js"></script>
     {{!-- add Bootstrap https://www.bootstrapcdn.com/ --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">  </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    {{!-- Add bootstrap --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</head>
+
 <body>
 {{!-- https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp --}}
 <!-- Grey with black text -->
@@ -21,12 +27,15 @@
             <a class="nav-link" href="/exerciseTracker" >Exercise Tracker</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/Courses" hidden >Courses</a>
+            <a class="nav-link" href="/expenseTracker" >Expense Tracker</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/waterTracker" >Water Tracker</a>
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
         {{#if user}}
-            <li class="nav-item"><a class="nav-link" href="#">{{user.username}}</a></li>
+            <li class="nav-item"><a class="nav-link" href="/user">{{user.fullName}}</a></li>
             <li class="nav-item"><a class="nav-link" href="/Logout">Logout</a></li>
         {{else}}
             <li class="nav-item"><a class="nav-link" href="/Register">Register</a></li>
@@ -35,7 +44,43 @@
     </ul>
 </nav>
 {{{body}}}
-{{!-- Add bootstrap --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
 </body>
 </html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>W3.CSS Template</title>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">-->
+<!--    <style>-->
+<!--        body,h1 {font-family: "Raleway", sans-serif}-->
+<!--        body, html {height: 100%}-->
+<!--        .bgimg {-->
+<!--            background-image: url('./assets/login.jpg');-->
+<!--            min-height: 100%;-->
+<!--            background-position: center;-->
+<!--            background-size: cover;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">-->
+<!--    <div class="w3-display-topleft w3-padding-large w3-xlarge">-->
+<!--        Logo-->
+<!--    </div>-->
+<!--    <div class="w3-display-middle">-->
+<!--        <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>-->
+<!--        <hr class="w3-border-grey" style="margin:auto;width:40%">-->
+<!--        <p class="w3-large w3-center">35 days left</p>-->
+<!--    </div>-->
+<!--    <div class="w3-display-bottomleft w3-padding-large">-->
+<!--        Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
