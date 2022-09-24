@@ -20,7 +20,7 @@ function IsLoggedIn(req,res,next){
  * Get Routes
  ---------------------------*/
 
-router.get('/', IsLoggedIn,function(req, res, next){
+router.get('/',function(req, res, next){
     ExpenseEntries.find({user:req.user},(err,expenseTracked)=>{
         if(err){console.log(err);}
         else{res.render('expenseTracker/indexExpense', { title: 'expense Tracker' ,user:req.user,dataset:expenseTracked});}
