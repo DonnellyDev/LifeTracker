@@ -10,5 +10,5 @@ Life Reframed (LR) is a multi-faceted web based application designed for student
 - [@Ridhish Kanara](https://www.github.com/ridhish1kanara)
 - [@Jay Patel ](https://github.com/JayPatel01122000)
 - [@Kaksh Patel](https://github.com/KakshPatel-ai)
-- [@Lubin Babu](https://github.com/Loui-x)
+
 
