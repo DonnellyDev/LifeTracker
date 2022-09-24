@@ -61,27 +61,29 @@ router.get('/register',  (req, res, next) => {
 //POST handler for /register
 router.post('/register',checkConfirmPassword, (req, res, next) => {
   // Create a new user based on the information from the page
-  User.register(new User({
+  User.create(new User({
         username: req.body.username,
-    Personals: {
-          name:{
-            firstName:req.body.firstName,
-            lastName:req.body.lastName
-          }}}),
+        Personals: {
+          name: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+          }
+        }
+      }),
       req.body.password,
       (err, newUser) => {
         if (err) {
           console.log(err);
           // take user back and reload register page
-          return res.redirect('/register');
-        }
-        else {
+          console.log("Didn't Work");
+          res.redirect('/register');
+        } else {
           // log user in
           req.login(newUser, (err) => {
             res.redirect('/user');
           });
         }
-      });
+      })
 });
 
 // GET handler for logout
