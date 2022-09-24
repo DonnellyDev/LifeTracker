@@ -9,7 +9,7 @@ const passport = require('passport');
 
 function IsLoggedIn(req,res,next){
     if (req.isAuthenticated){
-        console.log('Authenticated User');
+        console.log('Authenticated User'+ req.user);
         return next();
     }
     res.redirect('/login');
