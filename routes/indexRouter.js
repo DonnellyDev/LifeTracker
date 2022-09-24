@@ -61,7 +61,7 @@ router.get('/register',  (req, res, next) => {
 //POST handler for /register
 router.post('/register',checkConfirmPassword, (req, res, next) => {
   // Create a new user based on the information from the page
-  User.create(new User({
+  User.register(new User({
         username: req.body.username,
         Personals: {
           name: {
