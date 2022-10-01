@@ -1,18 +1,4 @@
 <h1>Welcome Back,{{user.fullName}}</h1>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {{#if user}}
 <a href="/user/edit">Update your user profile</a>
-<div class="container">
-    <div class="row">
-        <canvas id="food_chart" class="col-6"></canvas>
-        <canvas id="water_chart" class="col-6"></canvas>
-    </div>
-    <div class="row">
-        <canvas id="expense_chart" class="col-6"></canvas>
-        <canvas id="exercise_chart" class="col-6"></canvas>
-    </div>
-</div>
-
-<script>
-</script>
 {{/if}}
