@@ -30,6 +30,12 @@ const userSchemaDefinition = { // Add field according to the needs of user
     exerciseTracking:[exerciseTracking],
     expenseTracking:[expenseTracking],
     waterTracking:[waterTracking],
+    accessType: {
+        type: String,
+        required: true,
+        enum:["CUSTOMER","ADMIN"],
+        default: "CUSTOMER"
+    }
 };
 
 // Create a new mongoose schema

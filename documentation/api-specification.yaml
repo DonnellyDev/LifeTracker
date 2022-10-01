@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: "Grocery Catalog API"
+  description: "This API is a simple collection of standard grocery items that are available in stores near me. This will be updated when possible and with the most up to date information available."
+  version: "1.0.0"
+paths:
+  /api/projects:
+    get:
+      tags:
+        - " Products for the Users"
+      parameters:
+        - name: free-query
+          description: "A free query of a Product's name to find a filtered list of items"
+          in: query
+          schema:
+            type: string
+      summary: "Returns a list of Products"
+      responses:
+        "200":
+          description: "An unfiltered List of Products"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/definitions/Products'
+
+
+
+        "500":
+          description: "The database was unavailable"
+  /api/admin/products:
+    get:
+      tags:
+        - Admin Modifications
+      parameters:
+        - name: free-query
+          description: "A free query of a Product's name to find a filtered list of items"
+          in: query
+          schema:
+            type: string
+      summary: "Returns a list of Products"
+      responses:
+        "200":
+          description: "An unfiltered List of Products"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Products'
+        "500":
+          description: "The database was unavailable"
+    post:
+      tags:
+        - Admin Modifications
+      summary: Add a new product to the database
+      description: ''
+      parameters:
+        - in: header
+          name: body
+          description: A Json object of a new product
+          required : true
+          schema:
+            $ref : '#/components/schemas/Products'
+      responses:
+        "200":
+          description: " Successfully added new Product to Database"
+        "401":
+          description: "User Authorization failure, Check login Credentials"
+        "500":
+          description: "Unable to connect to database"
+    put:
+      tags:
+        - Admin Modifications
+      summary: Edit a product in the database
+      parameters:
+        - name: ":_id"
+          in: query
+          description: the document id of the product you are trying to change
+          schema:
+            type: string
+
+        - in: header
+          name: body
+          description: A Json object of the product modifications
+          required : true
+          schema:
+            $ref : '#/definitions/Products'
+
+      responses:
+        "200":
+          description: " Successfully added new Product to Database"
+        "401":
+          description: "User Authorization failure, Check login Credentials"
+        "500":
+          description: "Unable to connect to database"
+    delete:
+      tags:
+        - Admin Modifications
+      summary: Edit a product in the database
+      parameters:
+        - name: ":_id"
+          in: query
+          description: the document id of the product you are trying to change
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "There is no longer a Product with that id in the Database"
+        "401":
+          description: "User Authorization failure, Check login Credentials"
+        "500":
+          description: "Unable to connect to database"
+
+components:
+  schemas:
+    Products:
+      type: object
+      required:
+        - productName
+        - currentPrice
+      properties:
+        id:
+          type: string
+          example: "61b1103a080eb1168def17f4"
+        productName:
+          type: string
+          example: "Spaghetti"
+        description:
+          type: string
+          example: " No Name Brand Spaghetti"
+        currentPrice:
+          type: number
+          format: float
+          example: 12.54
+        storeName:
+          type: string
+          example: "Lawblobs"
+        saleDate:
+          type: string
+          format: date
+          example: "2021-08-10T00:00:00:000Z"
+        lastSalePrice:
+          type: number
+          format: float
+          example: 8.75
+
+

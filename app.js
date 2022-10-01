@@ -11,6 +11,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
+// Documentation
+
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 // Router Objects
 const indexRouter = require('./routes/indexRouter');
@@ -20,11 +24,19 @@ const expenseTrackerRouter = require('./routes/expenseTrackerRouter');
 const waterTrackerRouter = require('./routes/waterTrackerRouter');
 const userRouter = require('./routes/userRouter');
 
+// API Endpoint Routes
+const productsRouter = require('./routes/api/User/productsUserEndpoint');
+const adminRouter = require('./routes/api/Admin/productsAdminEndpoint');
+
+const app = express();
+// YAML Doc Routes
+const swaggerDoc = YAML.load('./documentation/api-specification.yaml');
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDoc));
 // Passport Modules
 const passport =require('passport');
 const session = require('express-session');
 
-const app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,12 +65,10 @@ app.use(passport.session());
 
 // Link Passport to Users Model
 const User = require('./models/userModels');
-passport.use( User.createStrategy());
-
+passport.use(User.createStrategy());
 // Set passport to w/r users to/from session object
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 
 // Routers
 app.use('/', indexRouter);
@@ -67,18 +77,14 @@ app.use('/exerciseTracker', exerciseTrackerRouter);
 app.use('/expenseTracker', expenseTrackerRouter);
 app.use('/waterTracker', waterTrackerRouter);
 app.use('/user',userRouter);
+app.use('/api/products',productsRouter);
+app.use('/api/admin/products',adminRouter);
+
 //
 const connectionString = process.env.DB_CONN;
-
-mongoose.connect(connectionString , {useNewUrlParser: true, useUnifiedTopology: true })
-    .then((message) => {
-  console.log('Connected successfully!');
-})
-    .catch((error) => {
-      console.log(`Error while connecting! ${error}`);
-    });
-
-
+mongoose.connect(connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
+    .then((message) => {console.log('Connected successfully!');})
+    .catch((error) => {console.log(`Error while connecting! ${error}`);});
 // HBS Helper Methods
 const hbs = require('hbs');
 hbs.registerHelper('createOption', (currentValue, selectedValue) => {
